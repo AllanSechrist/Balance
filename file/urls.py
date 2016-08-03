@@ -20,5 +20,14 @@ urlpatterns = [
     url(r'folders/(?P<pk>[0-9]+)/$', views.FolderUpdate.as_view(), name='folder-update'),
 
     # file/folders/<folder_id>/delete
-    url(r'folders/(?P<pk>[0-9]+)/delete/$', views.FolderDelete.as_view(), name='folder-delete')
+    url(r'folders/(?P<pk>[0-9]+)/delete/$', views.FolderDelete.as_view(), name='folder-delete'),
+
+    # file/<folder_id>/add/
+    url(r'^(?P<pk>[0-9]+)/add/$', views.ReceiptCreate.as_view(), name='receipt-add'),
+
+    # file/<receipt_id>/delete
+    url(r'^(?P<pk>[0-9]+)/delete/$', views.ReceiptDelete.as_view(), name='receipt-delete'),
+
+    # file/<receipt_id>/update
+    url(r'^(?P<pk>[0-9]+)/update/$', views.ReceiptUpdate.as_view(), name='receipt-update'),
 ]
