@@ -1,0 +1,64 @@
+{% extends 'file/base.html' %}
+
+{% block body %}
+    <div class="container-fluid">
+
+
+
+
+            <div class="panel panel-info">
+                <!-- Panel heading -->
+                <div class="panel-heading">My Folders</div>
+
+                <!-- Table -->
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    {% for folder in all_folders %}
+                    <tr>
+                        <!-- Open Folder -->
+                        <td>
+                            <a href="{% url 'file:detail' folder.id %}">
+                                <button type="button" class="btn btn-default btn-primary">{{ folder.name }}
+                                    <span class="glyphicon glyphicon-folder-open"></span>
+                                </button>
+                            </a>
+                        </td>
+                        <!-- Add Receipt -->
+                        <td>
+                            <a href="#">
+                                <button type="button" class="btn btn-default btn-success">Add Receipt
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </a>
+                        </td>
+                        <!-- Edit Folder -->
+                        <td>
+                            <a href="{% url 'file:folder-update' folder.id %}">
+                                <button type="button" class="btn btn-defualt btn-info">Edit Folder
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                            </a>
+                        </td>
+                        <!-- Delete Folder -->
+                        <td>
+                             <form action="{% url 'file:folder-delete' folder.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="folder_id" value="{{ folder.id }}"/>
+                                <button type="submit" class="btn btn-default btn-danger"> Delete Folder
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                             </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+        </div>
+
+{% endblock %}
