@@ -7,27 +7,32 @@
         <div class="panel panel-info">
 
             <div class="panel-heading">{{ folder.name }}
-                <a href="{% url 'file:receipt-add' %}" class="pull-right">Add Receipt+</a>
+
             </div>
 
             <table class="table">
                 <tr>
                     <th>Name</th>
                     <th>Date</th>
-                    <th>Classification</th>
                     <th>Amount</th>
                 </tr>
 
                 {% for receipt in folder.receipt_set.all %}
+
                 <tr>
                     <td>{{ receipt.store }}</td>
                     <td>{{ receipt.date }}</td>
-                    <td>{{ receipt.classification }}</td>
-                    <td>$0</td>
+                    <td>$ {{ receipt.amount }}</td>
                 </tr>
 
-
                 {% endfor %}
+
+                <tr>
+                    <td>TOTAL</td>
+                    <td></td>
+                    <td>{{ receipt.get_total_amount }}</td>
+
+                </tr>
 
             </table>
         </div>

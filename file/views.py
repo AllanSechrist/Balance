@@ -46,7 +46,7 @@ class FolderDelete(DeleteView):
 
 class ReceiptCreate(CreateView):
     model = Receipt
-    fields = ['store', 'date', 'classification']
+    fields = ['folder', 'store', 'date', 'amount']
 
 
 class ReceiptUpdate(UpdateView):
