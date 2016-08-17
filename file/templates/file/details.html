@@ -30,7 +30,9 @@
                 <tr>
                     <td>TOTAL</td>
                     <td></td>
-                    <td>{{ receipt.get_total_amount }}</td>
+                    {% for receipt in total %}
+                    <td>{{ receipt.receipt_total }}</td>
+                    {% endfor %}
 
                 </tr>
 
