@@ -18,7 +18,9 @@ class DetailView(generic.DetailView):
     model = Folder
     template_name = 'file/details.html'
 
-   # total = Folder.objects.all().aggregate(receipt_total=Sum('receipt__amount'))
+    def get_total(self):
+        total = Folder.objects.filter(self).aggregate(Sum('receipt__amount'))
+        return total
 
 # >>>>>>> FOLDER VIEWS >>>>>>>>
 
@@ -70,7 +72,6 @@ class UserFormView(View):
     def get(self, request):
         form = self.form_class(None)
         return render(request, self.template_name, {'form': form})
-
 
     def post(self, request):
         form = self.form_class(request.POST)

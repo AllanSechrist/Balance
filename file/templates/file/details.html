@@ -15,6 +15,7 @@
                     <th>Name</th>
                     <th>Date</th>
                     <th>Amount</th>
+                    <th>Option</th>
                 </tr>
 
                 {% for receipt in folder.receipt_set.all %}
@@ -23,17 +24,16 @@
                     <td>{{ receipt.store }}</td>
                     <td>{{ receipt.date }}</td>
                     <td>$ {{ receipt.amount }}</td>
+                    <td>Drop down here</td>
                 </tr>
 
                 {% endfor %}
 
                 <tr>
-                    <td>TOTAL</td>
+                    <td><b>TOTAL</b></td>
                     <td></td>
-                    {% for receipt in total %}
-                    <td>{{ receipt.receipt_total }}</td>
-                    {% endfor %}
-
+                    <td><b>$ {{ folder.get_total }}</b></td>
+                    <td></td>
                 </tr>
 
             </table>
